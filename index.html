@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alerta Apagón Cuba</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1a73e8">
+    <style>
+        body { font-family: sans-serif; background: #f4f7f9; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .card { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; width: 90%; max-width: 350px; }
+        h1 { color: #1a73e8; font-size: 24px; }
+        p { color: #666; font-size: 14px; }
+        select { width: 100%; padding: 12px; margin: 15px 0; border-radius: 10px; border: 1px solid #ddd; outline: none; }
+        button { background: #1a73e8; color: white; border: none; width: 100%; padding: 12px; border-radius: 10px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        button:active { transform: scale(0.98); }
+        .footer { margin-top: 20px; font-size: 11px; color: #999; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>💡 AlertaLuz Cuba</h1>
+        <p>Recibe avisos automáticos del canal de Telegram de la Empresa Eléctrica.</p>
+        
+        <label for="bloque">Selecciona tu bloque:</label>
+        <select id="bloque">
+            <option value="bloque1">Bloque 1</option>
+            <option value="bloque2">Bloque 2</option>
+            <option value="bloque3">Bloque 3</option>
+            <option value="bloque4">Bloque 4</option>
+        </select>
+
+        <button onclick="suscribir()">Activar Avisos</button>
+        
+        <div class="footer">
+            Para recibir las notificaciones, instala la app "ntfy" desde la Play Store o F-Droid.
+        </div>
+    </div>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
+        }
+
+        function suscribir() {
+            const bloque = document.getElementById('bloque').value;
+            const tema = 'apagones_cuba_' + bloque;
+            
+            // Redirigir a ntfy para facilitar la suscripción en el móvil
+            const url = 'https://ntfy.sh/' + tema;
+            
+            alert('Te has suscrito al ' + bloque + '. Ahora te abriré el servidor de notificaciones. Dale a "Subscribe" o "Suscibir".');
+            window.location.href = url;
+        }
+    </script>
+</body>
+</html>

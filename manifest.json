@@ -1,0 +1,15 @@
+{
+  "name": "Alerta Apagón Cuba",
+  "short_name": "AlertaLuz",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#f4f7f9",
+  "theme_color": "#1a73e8",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/2987/2987998.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
